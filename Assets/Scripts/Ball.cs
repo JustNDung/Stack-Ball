@@ -5,6 +5,17 @@ public class Ball : MonoBehaviour
     private Rigidbody _rb;
     private float _currentTime;
     private bool _smash, _invincible;
+
+    public enum BallState
+    {
+        Prepare,
+        Playing,
+        Died,
+        Finish
+    }
+    
+    [HideInInspector]
+    public BallState ballState = BallState.Prepare;
     
     private void Awake()
     {
@@ -19,43 +30,65 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) _smash = true;
-        if (Input.GetMouseButtonUp(0)) _smash = false;
+        if (ballState == BallState.Playing)
+        {
+            if (Input.GetMouseButtonDown(0)) _smash = true;
+            if (Input.GetMouseButtonUp(0)) _smash = false;
 
-        if (_invincible)
-        {
-            _currentTime -= Time.deltaTime * 0.35f;
-        }
-        else
-        {
-            if (_smash)
+            if (_invincible)
             {
-                _currentTime += Time.deltaTime * 0.8f;
+                _currentTime -= Time.deltaTime * 0.35f;
             }
             else
             {
-                _currentTime -= Time.deltaTime * 0.5f;
+                if (_smash)
+                {
+                    _currentTime += Time.deltaTime * 0.8f;
+                }
+                else
+                {
+                    _currentTime -= Time.deltaTime * 0.5f;
+                }
+            }
+
+            if (_currentTime >= 1)
+            {
+                _currentTime = 1;
+                _invincible = true;
+            }
+            else if (_currentTime <= 0)
+            {
+                _currentTime = 0;
+                _invincible = false;
             }
         }
 
-        if (_currentTime >= 1)
+        if (ballState == BallState.Prepare)
         {
-            _currentTime = 1;
-            _invincible = true;
+            if (Input.GetMouseButtonDown(0))
+            {
+                ballState = BallState.Playing;
+            }
         }
-        else if (_currentTime <= 0)
+        
+        if (ballState == BallState.Finish)
         {
-            _currentTime = 0;
-            _invincible = false;
+            if (Input.GetMouseButtonDown(0))
+            {
+                FindFirstObjectByType<LevelSpawner>().NextLevel();
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(0))
+        if (ballState == BallState.Playing)
         {
-            _smash = true;
-            _rb.linearVelocity = new Vector3(0, -100 * Time.fixedDeltaTime * 7, 0);
+            if (Input.GetMouseButton(0))
+            {
+                _smash = true;
+                _rb.linearVelocity = new Vector3(0, -100 * Time.fixedDeltaTime * 7, 0);
+            }
         }
         
         if (_rb.linearVelocity.y > 5) _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 5, _rb.linearVelocity.z);
@@ -88,6 +121,11 @@ public class Ball : MonoBehaviour
                     Debug.Log("Game Over");
                 }
             }
+        }
+
+        if (collision.gameObject.CompareTag("Finish") && ballState == BallState.Playing)
+        {
+            ballState = BallState.Finish;
         }
     }
 

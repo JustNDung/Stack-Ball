@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class LevelSpawner : MonoBehaviour
@@ -15,6 +16,7 @@ public class LevelSpawner : MonoBehaviour
 
     private void Start()
     {
+        level = PlayerPrefs.GetInt("Level", 1);
         if (level > 9)
         {
             addOn = 0;
@@ -76,5 +78,11 @@ public class LevelSpawner : MonoBehaviour
             default:    
                 break;
         }
+    }
+
+    public void NextLevel()
+    {
+        PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+        SceneManager.LoadScene(0);
     }
 }
