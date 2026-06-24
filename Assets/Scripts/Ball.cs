@@ -3,7 +3,8 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private Rigidbody _rb;
-    private bool _smash;
+    private float _currentTime;
+    private bool _smash, _invincible;
     
     private void Awake()
     {
@@ -20,6 +21,33 @@ public class Ball : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) _smash = true;
         if (Input.GetMouseButtonUp(0)) _smash = false;
+
+        if (_invincible)
+        {
+            _currentTime -= Time.deltaTime * 0.35f;
+        }
+        else
+        {
+            if (_smash)
+            {
+                _currentTime += Time.deltaTime * 0.8f;
+            }
+            else
+            {
+                _currentTime -= Time.deltaTime * 0.5f;
+            }
+        }
+
+        if (_currentTime >= 1)
+        {
+            _currentTime = 1;
+            _invincible = true;
+        }
+        else if (_currentTime <= 0)
+        {
+            _currentTime = 0;
+            _invincible = false;
+        }
     }
 
     private void FixedUpdate()
@@ -41,14 +69,24 @@ public class Ball : MonoBehaviour
         }
         else
         {
-            if (collision.gameObject.CompareTag("enemy"))
+            if (_invincible)
             {
-                Destroy(collision.transform.parent.gameObject);
+                if (collision.gameObject.CompareTag("enemy") || collision.gameObject.CompareTag("plane"))
+                {
+                    Destroy(collision.transform.parent.gameObject);
+                }
             }
-
-            if (collision.gameObject.CompareTag("plane"))
+            else
             {
-                Debug.Log("Game Over");
+                if (collision.gameObject.CompareTag("enemy"))
+                {
+                    Destroy(collision.transform.parent.gameObject);
+                }
+
+                if (collision.gameObject.CompareTag("plane"))
+                {
+                    Debug.Log("Game Over");
+                }
             }
         }
     }

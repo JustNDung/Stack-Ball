@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class LevelSpawner : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class LevelSpawner : MonoBehaviour
         }
 
         ModelSelection();
+        float random = Random.value;
         for (_i = 0; _i > -level - addOn; _i -= 0.5f)
         {
             if (level <= 20) _temp1 = Instantiate(modelPrefab[Random.Range(0, 2)]);
@@ -27,6 +30,20 @@ public class LevelSpawner : MonoBehaviour
             if (level > 100) _temp1 = Instantiate(modelPrefab[Random.Range(3, 4)]);
             _temp1.transform.position = new Vector3(0, _i - 0.01f, 0);
             _temp1.transform.eulerAngles = new Vector3(0, _i * 8, 0);
+
+            if (Mathf.Abs(_i) >= level * 0.3f && Mathf.Abs(_i) <= level * 0.6f)
+            {
+                _temp1.transform.eulerAngles = new Vector3(0, _i * 8, 0);
+                _temp1.transform.eulerAngles += new Vector3(0, 180, 0);
+            }
+            else if (Mathf.Abs(_i) >= level * 0.8f)
+            {
+                _temp1.transform.eulerAngles = new Vector3(0, _i * 8, 0);
+                if (random > 0.75f)
+                {
+                    _temp1.transform.eulerAngles += new Vector3(0, 180, 0);
+                }
+            }
             
             _temp1.transform.parent = FindFirstObjectByType<Rotator>().transform;
         }
