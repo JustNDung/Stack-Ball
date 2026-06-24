@@ -86,13 +86,13 @@ public class Ball : MonoBehaviour
             if (invincibleObj.activeInHierarchy) invincibleFill.fillAmount = _currentTime / 1;
         }
 
-        if (ballState == BallState.Prepare)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                ballState = BallState.Playing;
-            }
-        }
+        // if (ballState == BallState.Prepare)
+        // {
+        //     if (Input.GetMouseButtonDown(0))
+        //     {
+        //         ballState = BallState.Playing;
+        //     }
+        // }
         
         if (ballState == BallState.Finish)
         {
