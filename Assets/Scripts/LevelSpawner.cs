@@ -27,6 +27,8 @@ public class LevelSpawner : MonoBehaviour
             if (level > 100) _temp1 = Instantiate(modelPrefab[Random.Range(3, 4)]);
             _temp1.transform.position = new Vector3(0, _i - 0.01f, 0);
             _temp1.transform.eulerAngles = new Vector3(0, _i * 8, 0);
+            
+            _temp1.transform.parent = FindFirstObjectByType<Rotator>().transform;
         }
         
         _temp2 = Instantiate(winPrefab);
