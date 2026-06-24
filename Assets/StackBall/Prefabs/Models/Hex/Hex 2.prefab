@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4264818134662175442}
   - component: {fileID: 2299849233295747019}
   - component: {fileID: 5856128031623224900}
+  - component: {fileID: 6525500143723820275}
   m_Layer: 6
   m_Name: 2
   m_TagString: plane
@@ -141,6 +142,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6525500143723820275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4264818134659908624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789f464117944408a6243afb1a81a174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StackPartController
 --- !u!1 &4264818134659908626
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +167,7 @@ GameObject:
   - component: {fileID: 4264818134662175444}
   - component: {fileID: 3350262912375608274}
   - component: {fileID: 6842103798367574801}
+  - component: {fileID: 1610444456988426977}
   m_Layer: 6
   m_Name: 6
   m_TagString: enemy
@@ -282,6 +296,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1610444456988426977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4264818134659908626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789f464117944408a6243afb1a81a174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StackPartController
 --- !u!1 &4264818134659908628
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +321,7 @@ GameObject:
   - component: {fileID: 4264818134662175446}
   - component: {fileID: 3391400362842612096}
   - component: {fileID: 3465618330358273687}
+  - component: {fileID: 1859655260970014429}
   m_Layer: 6
   m_Name: 1
   m_TagString: plane
@@ -423,6 +450,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1859655260970014429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4264818134659908628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789f464117944408a6243afb1a81a174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StackPartController
 --- !u!1 &4264818134659908630
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +471,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4264818134659881014}
+  - component: {fileID: -1440941326188776471}
   m_Layer: 0
   m_Name: Hex 2
   m_TagString: Untagged
@@ -460,6 +500,25 @@ Transform:
   - {fileID: 4264818134659881010}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1440941326188776471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4264818134659908630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4fcfd34d7c4d8ca30d976d9789ff3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StackController
+  stackParts:
+  - {fileID: 1859655260970014429}
+  - {fileID: 6525500143723820275}
+  - {fileID: 5755160997004917879}
+  - {fileID: 6979223207478706883}
+  - {fileID: 2670358160024260299}
+  - {fileID: 1610444456988426977}
 --- !u!1 &4264818134659908634
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +532,7 @@ GameObject:
   - component: {fileID: 4264818134662175452}
   - component: {fileID: 1834409354881907603}
   - component: {fileID: 1646675533199002244}
+  - component: {fileID: 2670358160024260299}
   m_Layer: 6
   m_Name: 5
   m_TagString: enemy
@@ -601,6 +661,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2670358160024260299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4264818134659908634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789f464117944408a6243afb1a81a174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StackPartController
 --- !u!1 &4264818134659908636
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +686,7 @@ GameObject:
   - component: {fileID: 4264818134662175454}
   - component: {fileID: 1869344337040122949}
   - component: {fileID: 5780598514616239557}
+  - component: {fileID: 6979223207478706883}
   m_Layer: 6
   m_Name: 4
   m_TagString: enemy
@@ -742,6 +815,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6979223207478706883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4264818134659908636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789f464117944408a6243afb1a81a174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StackPartController
 --- !u!1 &4264818134659908638
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +840,7 @@ GameObject:
   - component: {fileID: 4264818134662175440}
   - component: {fileID: 997980135267138805}
   - component: {fileID: 2178227144846397874}
+  - component: {fileID: 5755160997004917879}
   m_Layer: 6
   m_Name: 3
   m_TagString: enemy
@@ -883,3 +969,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5755160997004917879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4264818134659908638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789f464117944408a6243afb1a81a174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StackPartController

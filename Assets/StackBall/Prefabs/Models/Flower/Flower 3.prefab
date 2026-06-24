@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6286621851326406430}
   - component: {fileID: 5467089847993838569}
   - component: {fileID: 781722939095087875}
+  - component: {fileID: 2630253298361872509}
   m_Layer: 6
   m_Name: 4
   m_TagString: enemy
@@ -141,6 +142,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2630253298361872509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6286621851328594384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789f464117944408a6243afb1a81a174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StackPartController
 --- !u!1 &6286621851328594392
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6286621851328306680}
+  - component: {fileID: 6591890942909373651}
   m_Layer: 0
   m_Name: Flower 3
   m_TagString: Untagged
@@ -176,6 +190,23 @@ Transform:
   - {fileID: 6286621851328306672}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6591890942909373651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6286621851328594392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4fcfd34d7c4d8ca30d976d9789ff3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StackController
+  stackParts:
+  - {fileID: 8739639034542229229}
+  - {fileID: 7235665674140180434}
+  - {fileID: 2205830759676375603}
+  - {fileID: 2630253298361872509}
 --- !u!1 &6286621851328594394
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +220,7 @@ GameObject:
   - component: {fileID: 6286621851326406424}
   - component: {fileID: 5353272622520246023}
   - component: {fileID: 185210861187507061}
+  - component: {fileID: 8739639034542229229}
   m_Layer: 6
   m_Name: 1
   m_TagString: plane
@@ -317,6 +349,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8739639034542229229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6286621851328594394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789f464117944408a6243afb1a81a174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StackPartController
 --- !u!1 &6286621851328594396
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +374,7 @@ GameObject:
   - component: {fileID: 6286621851326406426}
   - component: {fileID: 4106452732188098806}
   - component: {fileID: 1819598626958298394}
+  - component: {fileID: 7235665674140180434}
   m_Layer: 6
   m_Name: 2
   m_TagString: plane
@@ -458,6 +503,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7235665674140180434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6286621851328594396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789f464117944408a6243afb1a81a174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StackPartController
 --- !u!1 &6286621851328594398
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +528,7 @@ GameObject:
   - component: {fileID: 6286621851326406428}
   - component: {fileID: 5233913772749651960}
   - component: {fileID: 1414601982460469128}
+  - component: {fileID: 2205830759676375603}
   m_Layer: 6
   m_Name: 3
   m_TagString: plane
@@ -599,3 +657,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2205830759676375603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6286621851328594398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789f464117944408a6243afb1a81a174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StackPartController

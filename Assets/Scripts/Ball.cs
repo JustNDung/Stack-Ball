@@ -73,14 +73,14 @@ public class Ball : MonoBehaviour
             {
                 if (collision.gameObject.CompareTag("enemy") || collision.gameObject.CompareTag("plane"))
                 {
-                    Destroy(collision.transform.parent.gameObject);
+                    collision.transform.parent.GetComponent<StackController>().ShatterAllParts();
                 }
             }
             else
             {
                 if (collision.gameObject.CompareTag("enemy"))
                 {
-                    Destroy(collision.transform.parent.gameObject);
+                    collision.transform.parent.GetComponent<StackController>().ShatterAllParts();
                 }
 
                 if (collision.gameObject.CompareTag("plane"))
