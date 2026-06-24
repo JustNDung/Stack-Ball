@@ -1,10 +1,16 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ball : MonoBehaviour
 {
     private Rigidbody _rb;
     private float _currentTime;
     private bool _smash, _invincible;
+    private int _currentBrokenStacks, _totalStacks;
+
+    public GameObject invincibleObj;
+    public Image invincibleFill;
+    public GameObject fireEffect;
 
     public enum BallState
     {
@@ -22,11 +28,13 @@ public class Ball : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _currentBrokenStacks = 0;
     }
     
     void Start()
     {
-        
+        _totalStacks = FindFirstObjectByType<StackController>().Length;
+        // TODO: Find a better way to get the total stacks
     }
 
     // Update is called once per frame
@@ -40,9 +48,12 @@ public class Ball : MonoBehaviour
             if (_invincible)
             {
                 _currentTime -= Time.deltaTime * 0.35f;
+                if (!fireEffect.activeInHierarchy) fireEffect.SetActive(true);
             }
             else
             {
+                if (fireEffect.activeInHierarchy) fireEffect.SetActive(false);
+                
                 if (_smash)
                 {
                     _currentTime += Time.deltaTime * 0.8f;
@@ -52,17 +63,27 @@ public class Ball : MonoBehaviour
                     _currentTime -= Time.deltaTime * 0.5f;
                 }
             }
+            
+            if (_currentTime >= 0.3f || invincibleFill.color == Color.red) 
+            {
+                invincibleObj.SetActive(true);
+            }
+            else invincibleObj.SetActive(false);
 
             if (_currentTime >= 1)
             {
                 _currentTime = 1;
                 _invincible = true;
+                invincibleFill.color = Color.red;
             }
             else if (_currentTime <= 0)
             {
                 _currentTime = 0;
                 _invincible = false;
+                invincibleFill.color = Color.white;
             }
+            
+            if (invincibleObj.activeInHierarchy) invincibleFill.fillAmount = _currentTime / 1;
         }
 
         if (ballState == BallState.Prepare)
@@ -98,6 +119,8 @@ public class Ball : MonoBehaviour
 
     public void IncreaseBrokenStacks()
     {
+        _currentBrokenStacks++;
+        
         if (!_invincible)
         {
             ScoreManager.Instance.AddScore(1);
@@ -141,6 +164,8 @@ public class Ball : MonoBehaviour
                 }
             }
         }
+        
+        FindFirstObjectByType<GameUI>().LevelSliderFill( _currentBrokenStacks / (float)_totalStacks);
 
         if (collision.gameObject.CompareTag("Finish") && ballState == BallState.Playing)
         {

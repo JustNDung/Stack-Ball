@@ -1,9 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class StackController : MonoBehaviour
 {
     [SerializeField] private StackPartController[] stackParts = null;
+    public int Length;
+
+    private void Awake()
+    {
+        Length = stackParts.Length;
+    }
 
     public void ShatterAllParts()
     {
