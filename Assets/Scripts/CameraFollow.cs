@@ -14,10 +14,18 @@ public class CameraFollow : MonoBehaviour
     {
         if (_win == null)
         {
-            _win = GameObject.Find("Win(Clone)").GetComponent<Transform>();
+            GameObject winObj = GameObject.Find("Win(Clone)");
+            if (winObj != null)
+            {
+                _win = winObj.GetComponent<Transform>();
+            }
         }
         
-        if (transform.position.y > _ball.transform.position.y && transform.position.y > _win.position.y + 4f)
+        if (_win != null && transform.position.y > _ball.transform.position.y && transform.position.y > _win.position.y + 4f)
+        {
+            _camFollow = new Vector3(transform.position.x, _ball.position.y, transform.position.z);
+        }
+        else if (_win == null && transform.position.y > _ball.transform.position.y)
         {
             _camFollow = new Vector3(transform.position.x, _ball.position.y, transform.position.z);
         }

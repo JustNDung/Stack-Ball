@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
     private Text _scoreText;
     public int score = 10;
+    public int lastScore;
 
     private void Awake()
     {
@@ -55,6 +56,7 @@ public class ScoreManager : MonoBehaviour
     
     public void ResetScore()
     {
+        lastScore = score;
         score = 0;
     }
 }

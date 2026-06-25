@@ -33,8 +33,16 @@ public class Ball : MonoBehaviour
     
     void Start()
     {
-        _totalStacks = FindFirstObjectByType<StackController>().Length;
-        // TODO: Find a better way to get the total stacks
+        StartCoroutine(DelayedInit());
+    }
+
+    private System.Collections.IEnumerator DelayedInit()
+    {
+        // Wait for LevelSpawner.Start() to create all stack objects first
+        yield return new WaitForEndOfFrame();
+        
+        // Count all StackController instances - each one represents one stack platform
+        _totalStacks = FindObjectsByType<StackController>(FindObjectsSortMode.None).Length;
     }
 
     // Update is called once per frame
@@ -179,7 +187,8 @@ public class Ball : MonoBehaviour
             }
         }
         
-        FindFirstObjectByType<GameUI>().LevelSliderFill( _currentBrokenStacks / (float)_totalStacks);
+        if (_totalStacks > 0)
+            FindFirstObjectByType<GameUI>().LevelSliderFill((float)_currentBrokenStacks / _totalStacks);
 
         if (collision.gameObject.CompareTag("Finish") && ballState == BallState.Playing)
         {

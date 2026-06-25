@@ -71,6 +71,23 @@ public class GameUI : MonoBehaviour
             finishUI.SetActive(false);
             gameOverUI.SetActive(false);
         }
+
+        if (_ball.ballState == Ball.BallState.Finish)
+        {
+            inGameUI.SetActive(false);
+            finishUI.SetActive(true);
+            gameOverUI.SetActive(false);
+            finishLevelText.text = "LEVEL " + FindFirstObjectByType<LevelSpawner>().level + " COMPLETE!";
+        }
+        
+        if (_ball.ballState == Ball.BallState.Died)
+        {
+            inGameUI.SetActive(false);
+            finishUI.SetActive(false);
+            gameOverUI.SetActive(true);
+            gameOverScoreText.text = "Score: " + ScoreManager.Instance.lastScore;
+            gameOverBestScoreText.text = "Best: " + PlayerPrefs.GetInt("HighScore", 0);
+        }
     }
 
     private bool IgnoreUI()
