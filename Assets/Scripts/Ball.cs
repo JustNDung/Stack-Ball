@@ -109,6 +109,14 @@ public class Ball : MonoBehaviour
                 FindFirstObjectByType<LevelSpawner>().NextLevel();
             }
         }
+        
+        if (ballState == BallState.Died)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                FindFirstObjectByType<LevelSpawner>().RestartLevel();
+            }
+        }
     }
 
     private void FixedUpdate()

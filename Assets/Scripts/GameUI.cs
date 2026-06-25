@@ -85,7 +85,7 @@ public class GameUI : MonoBehaviour
             inGameUI.SetActive(false);
             finishUI.SetActive(false);
             gameOverUI.SetActive(true);
-            gameOverScoreText.text = "Score: " + ScoreManager.Instance.lastScore;
+            gameOverScoreText.text = "Score: " + PlayerPrefs.GetInt("LastScore", 0);
             gameOverBestScoreText.text = "Best: " + PlayerPrefs.GetInt("HighScore", 0);
         }
     }

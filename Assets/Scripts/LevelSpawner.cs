@@ -103,4 +103,9 @@ public class LevelSpawner : MonoBehaviour
         PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
         SceneManager.LoadScene(0);
     }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
