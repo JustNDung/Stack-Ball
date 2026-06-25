@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-    public GameObject homeUI, inGameUI;
+    public GameObject homeUI, inGameUI, finishUI, gameOverUI;
     public GameObject allButtons;
 
     private bool _buttons;
@@ -18,6 +18,14 @@ public class GameUI : MonoBehaviour
     public Image levelSlider;
     public Image currentLevelImg;
     public Image nextLevelImg;
+    public Text currentLevelText, nextLevelText;
+
+    [Header("Finish")] 
+    public Text finishLevelText;
+
+    [Header("GameOver")] 
+    public Text gameOverScoreText;
+    public Text gameOverBestScoreText;
 
     private Material _ballMat;
     private Ball _ball;
@@ -33,6 +41,12 @@ public class GameUI : MonoBehaviour
         nextLevelImg.color = _ballMat.color;
         
         soundButton.onClick.AddListener(() => SoundManager.Instance.SoundOnOff());
+    }
+
+    private void Start()
+    {
+        currentLevelText.text = FindFirstObjectByType<LevelSpawner>().level.ToString();
+        nextLevelText.text = (FindFirstObjectByType<LevelSpawner>().level + 1).ToString();
     }
 
     private void Update()
@@ -54,6 +68,8 @@ public class GameUI : MonoBehaviour
             _ball.ballState = Ball.BallState.Playing;
             homeUI.SetActive(false);
             inGameUI.SetActive(true);
+            finishUI.SetActive(false);
+            gameOverUI.SetActive(false);
         }
     }
 
